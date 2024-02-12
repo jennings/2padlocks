@@ -8,8 +8,8 @@
       path: "/",
     },
     {
-      text: "Demo",
-      path: "/demo",
+      text: "Receive",
+      path: "/receive",
     },
   ];
 </script>

@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import type { Context } from "$lib/encryption";
   import { PublicKey, SealedBox, createContext } from "$lib/encryption";
+  import clipboardCopy from "clipboard-copy";
+  import { onMount } from "svelte";
 
   type Loadable<T> =
     | { state: "loading" }
@@ -67,6 +68,7 @@
 
     {#if ciphertext != null}
       <textarea readonly rows="4" cols="50" value={ciphertext}></textarea>
+      <button on:click={clipboardCopy.bind(undefined, ciphertext)}>Copy</button>
     {/if}
   </div>
 {:else}
