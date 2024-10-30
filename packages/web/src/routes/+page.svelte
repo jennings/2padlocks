@@ -60,13 +60,13 @@
       cols="50"
       value={plaintext}
       on:input={(e) => (plaintext = e.currentTarget.value)}
-    />
+    ></textarea>
     <button on:click={seal.bind(undefined, data.value.context, data.value.publicKey)}>
       Encrypt
     </button>
 
     {#if ciphertext != null}
-      <textarea readonly rows="4" cols="50" value={ciphertext} />
+      <textarea readonly rows="4" cols="50" value={ciphertext}></textarea>
     {/if}
   </div>
 {:else}

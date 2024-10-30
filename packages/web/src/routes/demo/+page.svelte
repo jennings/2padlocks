@@ -83,13 +83,18 @@
       <h2>Decrypt response</h2>
       <label
         >Ciphertext <br />
-        <textarea rows="4" cols="50" value={ciphertext} on:input={(e) => (ciphertext = e.currentTarget.value)} />
+        <textarea
+          rows="4"
+          cols="50"
+          value={ciphertext}
+          on:input={(e) => (ciphertext = e.currentTarget.value)}
+        ></textarea>
       </label>
       <br />
       {#if plaintext}
         <label
           >Plaintext <br />
-          <textarea rows="4" cols="50" readonly value={plaintext} />
+          <textarea rows="4" cols="50" readonly value={plaintext}></textarea>
         </label>
       {/if}
     </div>
