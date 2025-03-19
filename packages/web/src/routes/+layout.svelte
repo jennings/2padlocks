@@ -1,6 +1,7 @@
 <script>
   import "../app.scss";
   import { page } from "$app/stores";
+  import bootstrapJs from "bootstrap/dist/js/bootstrap.bundle.js?url";
 
   const links = [
     {
@@ -13,6 +14,10 @@
     },
   ];
 </script>
+
+<svelte:head>
+  <script defer src={bootstrapJs}></script>
+</svelte:head>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container">
