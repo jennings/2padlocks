@@ -7,9 +7,11 @@
     onRemove: (request: SecretRequest) => void;
     selected: boolean;
   };
-  let { request, selected, onSelect }: Props = $props();
+  let { request, selected, onSelect, onRemove }: Props = $props();
 
-  function remove() {}
+  function remove() {
+    onRemove(request);
+  }
 </script>
 
 <li class:selected>

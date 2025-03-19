@@ -10,10 +10,12 @@
   };
   let { request = $bindable(), context }: Props = $props();
 
-  let requestUrl = $derived(`${window.origin}/#${new URLSearchParams({
-    keyType: request.keyPair.keyType,
-    publicKey: request.keyPair.publicKey,
-  })}`);
+  let requestUrl = $derived(
+    `${window.origin}/#${new URLSearchParams({
+      keyType: request.keyPair.keyType,
+      publicKey: request.keyPair.publicKey,
+    })}`,
+  );
 
   let ciphertext = $state("");
   let plaintext = $derived(context && ciphertext ? decrypt(context, ciphertext) : "");

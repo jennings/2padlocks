@@ -5,3 +5,7 @@ export type SecretRequest = {
 	created_at: string;
 	keyPair: StringKeyPair;
 };
+
+export function secretRequestEquals(a: SecretRequest, b: SecretRequest) {
+	return a.keyPair.privateKey == b.keyPair.privateKey;
+}

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { KeyPair, type Context } from "$lib/encryption";
-  import type { SecretRequest } from "$lib/model";
+  import { secretRequestEquals, type SecretRequest } from "$lib/model";
   import type { Writable } from "svelte/store";
   import RequestListItem from "./RequestListItem.svelte";
 
@@ -28,8 +28,10 @@
   }
 
   function onRemove(request: SecretRequest) {
-    requestList.update((requests) => requests?.filter((r) => r !== request) ?? []);
-    if (selected === request) {
+    requestList.update(
+      (requests) => requests?.filter((r) => !secretRequestEquals(r, request)) ?? [],
+    );
+    if (!selected || secretRequestEquals(selected, request)) {
       onSelect(null);
     }
   }
