@@ -11,7 +11,7 @@
   let { request = $bindable(), context }: Props = $props();
 
   let requestUrl = $derived(
-    `${window.origin}/#${new URLSearchParams({
+    `${window.origin}/send#${new URLSearchParams({
       keyType: request.keyPair.keyType,
       publicKey: request.keyPair.publicKey,
     })}`,

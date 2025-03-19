@@ -8,7 +8,7 @@
       path: "/",
     },
     {
-      text: "Receive",
+      text: "Receive secrets",
       path: "/receive",
     },
   ];
