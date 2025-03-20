@@ -3,21 +3,32 @@
   import { PublicKey, SealedBox, createContext } from "$lib/encryption";
   import clipboardCopy from "clipboard-copy";
   import { onMount } from "svelte";
+  import { Copy, FileLock, Send } from "svelte-bootstrap-icons";
 
   type Loadable<T> =
     | { state: "loading" }
     | { state: "ready"; value: T }
     | { state: "error"; error: unknown };
 
-  let plaintext = "";
-  let ciphertext: string | null = "";
+  let plaintext = $state("");
+  let ciphertext: string | null = $state(null);
   type ReadyData = { context: Context; publicKey: PublicKey };
-  let data: Loadable<ReadyData> = { state: "loading" };
-  let recipient: string | null;
+  let data: Loadable<ReadyData> = $state({ state: "loading" });
+
+  let hasNavigator = $state(false);
+  onMount(() => {
+    hasNavigator = typeof navigator.share === "function";
+  });
 
   function seal(context: Context, key: PublicKey) {
     const box = SealedBox.seal(context, plaintext, key);
     ciphertext = box.toBase64();
+  }
+
+  function onShare() {
+    if (ciphertext) {
+      navigator.share({ text: ciphertext });
+    }
   }
 
   onMount(async () => {
@@ -25,7 +36,6 @@
     const params = new URLSearchParams(hash.slice(1));
     const publicKey = params.get("publicKey");
     const keyType = params.get("keyType");
-    recipient = params.get("recipient");
 
     if (publicKey == null || keyType == null) {
       const missingNames = [!publicKey && "publicKey", !keyType && "keyType"]
@@ -52,24 +62,35 @@
 
 {#if data.state === "ready"}
   <div class="container">
-    <p>
-      Encrypt a secret{#if recipient}
-        to {recipient}{/if}.
-    </p>
+    <p>Encrypt a secret.</p>
     <textarea
       rows="4"
       cols="50"
       value={plaintext}
-      on:input={(e) => (plaintext = e.currentTarget.value)}
+      oninput={(e) => (plaintext = e.currentTarget.value)}
     ></textarea>
-    <button on:click={seal.bind(undefined, data.value.context, data.value.publicKey)}>
-      Encrypt
+    <button
+      class="btn btn-primary"
+      onclick={seal.bind(undefined, data.value.context, data.value.publicKey)}
+    >
+      <FileLock /> Encrypt
     </button>
 
-    {#if ciphertext != null}
-      <textarea readonly rows="4" cols="50" value={ciphertext}></textarea>
-      <button on:click={clipboardCopy.bind(undefined, ciphertext)}>Copy</button>
+    <textarea readonly disabled={ciphertext == null} rows="4" cols="50" value={ciphertext}
+    ></textarea>
+    {#if hasNavigator}
+      <button class="btn btn-primary" onclick={onShare} aria-label="Share">
+        <Send />
+      </button>
     {/if}
+    <button
+      class="btn btn-outline"
+      onclick={clipboardCopy.bind(undefined, ciphertext ?? "")}
+      aria-label="Copy to clipboard"
+    >
+      <Copy />
+      Copy to clipboard
+    </button>
   </div>
 {:else if data.state === "error"}
   <p>

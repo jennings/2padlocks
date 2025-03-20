@@ -3,6 +3,9 @@
   import { KeyPair, SealedBox } from "$lib/encryption";
   import type { SecretRequest } from "$lib/model";
   import clipboardCopy from "clipboard-copy";
+  import type { Toast } from "bootstrap";
+  import { onMount } from "svelte";
+  import { Copy, Send } from "svelte-bootstrap-icons";
 
   type Props = {
     request: SecretRequest;
@@ -20,6 +23,25 @@
   let ciphertext = $state("");
   let plaintext = $derived(context && ciphertext ? decrypt(context, ciphertext) : "");
 
+  let hasNavigator = $state(false);
+  onMount(() => {
+    hasNavigator = typeof navigator.share === "function";
+  });
+
+  let toastEl: HTMLDivElement;
+  let toast: Toast | null = $state(null);
+  onMount(async () => {
+    const { Toast } = await import("bootstrap");
+    toast = new Toast(toastEl);
+  });
+
+  function onCopyRequestUrl() {
+    clipboardCopy(requestUrl);
+    toast?.show();
+  }
+  function onShare() {
+    navigator.share({ text: requestUrl });
+  }
   function decrypt(context: Context, ciphertext: string) {
     try {
       const reconstructedBox = SealedBox.fromBase64(context, ciphertext);
@@ -33,47 +55,81 @@
 
 <div class="col">
   <h2>Create request</h2>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <label for="keyType">Name</label>
-      </div>
-      <div class="col">
-        <input readonly name="name" bind:value={request.name} />
+  <div class="row g-3">
+    <div class="col-12">
+      <label for="keyType" class="form-label">Name</label>
+      <input class="form-control" name="name" bind:value={request.name} />
+    </div>
+    <div class="col-12">
+      <label class="form-label" for="requestUrl">Request URL</label>
+      <input class="form-control" readonly name="requestUrl" value={requestUrl} /> <br />
+      {#if hasNavigator}
+        <button class="btn btn-primary float-start" onclick={onShare} aria-label="Share">
+          <Send />
+        </button>
+      {/if}
+      <button
+        class="btn btn-primary float-start"
+        onclick={onCopyRequestUrl}
+        aria-label="Copy to clipboard"
+      >
+        <Copy />
+      </button>
+      <a target="_blank" href={requestUrl}>Open in new window</a>
+      <div aria-live="polite" aria-atomic="true" class="position-relative">
+        <div class="toast-container position-absolute p-3" id="toastPlacement">
+          <div
+            bind:this={toastEl}
+            class="toast"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="toast-body">Copied to clipboard</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <label for="keyType">Key type </label>
-      </div>
-      <div class="col">
-        <input readonly name="keyType" value={request.keyPair.keyType} />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label for="keyType">Public key</label>
-      </div>
-      <div class="col">
-        <input readonly name="publicKey" value={request.keyPair.publicKey} />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label for="keyType">Private key</label>
-      </div>
-      <div class="col">
-        <input readonly name="privateKey" value={request.keyPair.privateKey} />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label for="requestUrl">Request URL</label>
-      </div>
-      <div class="col">
-        <input readonly name="requestUrl" value={requestUrl} /> <br />
-        <button onclick={clipboardCopy.bind(undefined, requestUrl)}>Copy</button> <br />
-        <a target="_blank" href={requestUrl}>Open in new window</a>
+    <div class="col-12 accordion" id="nerdData">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#requestNerdData"
+            aria-expanded="false"
+            aria-controls="requestNerdData"
+          >
+            Data for nerds
+          </button>
+        </h2>
+        <div class="accordion-collapse collapse" id="requestNerdData" data-bs-parent="#nerdData">
+          <div class="accordion-body row g-3">
+            <div class="col-12">
+              <label class="form-label" for="keyType">Key type</label>
+              <input class="form-control" readonly name="keyType" value={request.keyPair.keyType} />
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="keyType">Public key</label>
+              <input
+                class="form-control"
+                readonly
+                name="publicKey"
+                value={request.keyPair.publicKey}
+              />
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="keyType">Private key</label>
+              <input
+                class="form-control"
+                readonly
+                name="privateKey"
+                value={request.keyPair.privateKey}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -19,6 +19,7 @@
 		"@sveltejs/adapter-static": "^3.0.6",
 		"@sveltejs/kit": "^2.7.3",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"@types/bootstrap": "^5.2.10",
 		"@types/eslint": "8.56.0",
 		"@types/libsodium-wrappers": "^0.7.13",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
@@ -40,6 +41,7 @@
 	"type": "module",
 	"dependencies": {
 		"clipboard-copy": "^4.0.1",
-		"libsodium-wrappers": "^0.7.13"
+		"libsodium-wrappers": "^0.7.13",
+		"svelte-bootstrap-icons": "^3.1.2"
 	}
 }

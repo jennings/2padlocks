@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { SecretRequest } from "$lib/model";
+  import { Trash } from "svelte-bootstrap-icons";
 
   type Props = {
     request: SecretRequest;
@@ -18,7 +19,9 @@
   <button class="name" onclick={() => onSelect(request)}>{request.name}</button>
   <div class="date">{request.created_at}</div>
   <div class="close">
-    <button onclick={remove}>(x) Delete</button>
+    <button class="btn btn-sm" onclick={remove} aria-label="Delete">
+      <Trash />
+    </button>
   </div>
 </li>
 

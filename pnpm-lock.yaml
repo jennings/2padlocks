@@ -47,6 +47,9 @@ importers:
       libsodium-wrappers:
         specifier: ^0.7.13
         version: 0.7.13
+      svelte-bootstrap-icons:
+        specifier: ^3.1.2
+        version: 3.1.2
     devDependencies:
       '@popperjs/core':
         specifier: ^2.11.8
@@ -63,6 +66,9 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^4.0.0
         version: 4.0.0(svelte@5.1.5)(vite@5.4.10)
+      '@types/bootstrap':
+        specifier: ^5.2.10
+        version: 5.2.10
       '@types/eslint':
         specifier: 8.56.0
         version: 8.56.0
@@ -1316,6 +1322,12 @@ packages:
     resolution: {integrity: sha512-WXCyOcRtH37HAUkpXhUduaxdm82b4GSlyTqajXviN4EfiuPgNYR109xMCKvpl6zPIpua0DGlMEDCq+g8EdoheQ==}
     dependencies:
       '@babel/types': 7.23.9
+    dev: true
+
+  /@types/bootstrap@5.2.10:
+    resolution: {integrity: sha512-F2X+cd6551tep0MvVZ6nM8v7XgGN/twpdNDjqS1TUM7YFNEtQYWk+dKAnH+T1gr6QgCoGMPl487xw/9hXooa2g==}
+    dependencies:
+      '@popperjs/core': 2.11.8
     dev: true
 
   /@types/cookie@0.6.0:
@@ -4035,6 +4047,10 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
     dev: true
+
+  /svelte-bootstrap-icons@3.1.2:
+    resolution: {integrity: sha512-vy+qmWFfLJZxu5BaDlmaUG4uzki1rodX5ERZAP6KQdyO/2WNeGBDU4Yke3Z0NRq+VSepK86iAy+iUJvlUdsbBg==}
+    dev: false
 
   /svelte-check@4.0.5(svelte@5.1.5)(typescript@5.3.3):
     resolution: {integrity: sha512-icBTBZ3ibBaywbXUat3cK6hB5Du+Kq9Z8CRuyLmm64XIe2/r+lQcbuBx/IQgsbrC+kT2jQ0weVpZSSRIPwB6jQ==}

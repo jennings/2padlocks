@@ -3,6 +3,7 @@
   import { secretRequestEquals, type SecretRequest } from "$lib/model";
   import type { Writable } from "svelte/store";
   import RequestListItem from "./RequestListItem.svelte";
+  import { PlusCircle } from "svelte-bootstrap-icons";
 
   type Props = {
     selected: SecretRequest | null;
@@ -38,7 +39,10 @@
 </script>
 
 <div>
-  <button onclick={create}>+ Add</button>
+  <button class="btn btn-outline-primary" onclick={create}>
+    <PlusCircle />
+    Create new secret request
+  </button>
   <ul>
     {#each $requestList ?? [] as request}
       <RequestListItem
