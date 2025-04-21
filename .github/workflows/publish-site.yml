@@ -35,7 +35,7 @@ jobs:
         working-directory: packages/web
         run: |
           pnpm install --frozen-lockfile
-          pnpm build
+          pnpm exec turbo build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
