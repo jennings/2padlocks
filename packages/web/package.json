@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"license": "Apache-2.0",
+	"packageManager": "pnpm@10.12.3+sha512.467df2c586056165580ad6dfb54ceaad94c5a30f80893ebdec5a44c5aa73c205ae4a5bb9d5ed6bb84ea7c249ece786642bbb49d06a307df218d03da41c317417",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -29,7 +30,7 @@
 		"eslint-plugin-svelte": "^2.46.0",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.2.7",
-		"sass": "^1.70.0",
+		"sass": "^1.77.6",
 		"svelte": "^5.1.5",
 		"svelte-check": "^4.0.5",
 		"tslib": "^2.4.1",
