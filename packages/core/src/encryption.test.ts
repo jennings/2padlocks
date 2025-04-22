@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { KeyPair, SealedBox, createContext } from "./encryption.js";
+import { KeyPair, SealedBox, createContext } from "./encryption";
 
 describe("KeyPair", () => {
 	it("can serialize and deserialize", async () => {

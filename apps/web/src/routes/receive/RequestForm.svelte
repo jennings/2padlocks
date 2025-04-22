@@ -1,7 +1,6 @@
 <script lang="ts">
-  import type { Context } from "$lib/encryption";
-  import { KeyPair, SealedBox } from "$lib/encryption";
   import type { SecretRequest } from "$lib/model";
+  import { KeyPair, SealedBox, type Context } from "@repo/core/encryption";
   import clipboardCopy from "clipboard-copy";
 
   type Props = {

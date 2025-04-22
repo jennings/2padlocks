@@ -1,6 +1,6 @@
+import type { Context, StringKeyPair } from "@repo/core/encryption";
+import { KeyPair } from "@repo/core/encryption";
 import { spawnSync } from "child_process";
-import type { Context, StringKeyPair } from "./encryption.js";
-import { KeyPair } from "./encryption.js";
 
 export class OnePassword {
 	constructor(private readonly context: Context) {}

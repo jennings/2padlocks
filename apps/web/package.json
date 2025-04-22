@@ -21,7 +21,6 @@
 		"@sveltejs/kit": "^2.7.3",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"@types/eslint": "8.56.0",
-		"@types/libsodium-wrappers": "^0.7.13",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
 		"bootstrap": "^5.3.2",
@@ -40,7 +39,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"clipboard-copy": "^4.0.1",
-		"libsodium-wrappers": "^0.7.13"
+		"@repo/core": "workspace:*",
+		"clipboard-copy": "^4.0.1"
 	}
 }

@@ -1,6 +1,5 @@
 <script lang="ts">
-  import type { Context } from "$lib/encryption";
-  import { PublicKey, SealedBox, createContext } from "$lib/encryption";
+  import { PublicKey, SealedBox, createContext, type Context } from "@repo/core/encryption";
   import clipboardCopy from "clipboard-copy";
   import { onMount } from "svelte";
 

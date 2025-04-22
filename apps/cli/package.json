@@ -18,12 +18,11 @@
 	"license": "Apache-2.0",
 	"packageManager": "pnpm@10.12.3+sha512.467df2c586056165580ad6dfb54ceaad94c5a30f80893ebdec5a44c5aa73c205ae4a5bb9d5ed6bb84ea7c249ece786642bbb49d06a307df218d03da41c317417",
 	"dependencies": {
-		"commander": "^11.1.0",
-		"libsodium-wrappers": "^0.7.13"
+		"@repo/core": "workspace:*",
+		"commander": "^11.1.0"
 	},
 	"devDependencies": {
 		"@types/jest": "^29.5.12",
-		"@types/libsodium-wrappers": "^0.7.13",
 		"@types/node": "^20.11.5",
 		"jest": "^29.7.0",
 		"prettier": "^3.2.4",

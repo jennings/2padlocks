@@ -2,8 +2,10 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
 		"strict": true,
-		"target": "ES2018",
+		"target": "ES2022",
 		"esModuleInterop": true,
+		"verbatimModuleSyntax": true,
+		"isolatedModules": true,
 		"skipLibCheck": true,
 		"stripInternal": true,
 		"declaration": true,

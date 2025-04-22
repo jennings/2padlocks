@@ -14,19 +14,16 @@ importers:
 
   apps/cli:
     dependencies:
+      '@repo/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       commander:
         specifier: ^11.1.0
         version: 11.1.0
-      libsodium-wrappers:
-        specifier: ^0.7.13
-        version: 0.7.15
     devDependencies:
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.14
-      '@types/libsodium-wrappers':
-        specifier: ^0.7.13
-        version: 0.7.14
       '@types/node':
         specifier: ^20.11.5
         version: 20.17.30
@@ -45,12 +42,12 @@ importers:
 
   apps/web:
     dependencies:
+      '@repo/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       clipboard-copy:
         specifier: ^4.0.1
         version: 4.0.1
-      libsodium-wrappers:
-        specifier: ^0.7.13
-        version: 0.7.15
     devDependencies:
       '@popperjs/core':
         specifier: ^2.11.8
@@ -70,9 +67,6 @@ importers:
       '@types/eslint':
         specifier: 8.56.0
         version: 8.56.0
-      '@types/libsodium-wrappers':
-        specifier: ^0.7.13
-        version: 0.7.14
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.0.0
         version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.8.3))(eslint@8.57.1)(typescript@5.8.3)
@@ -115,6 +109,22 @@ importers:
       vite:
         specifier: ^5.4.10
         version: 5.4.18(@types/node@20.17.30)(sass@1.77.6)
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.1(@types/node@20.17.30)(sass@1.77.6)
+
+  packages/core:
+    dependencies:
+      libsodium-wrappers:
+        specifier: ^0.7.15
+        version: 0.7.15
+    devDependencies:
+      '@types/libsodium-wrappers':
+        specifier: ^0.7.14
+        version: 0.7.14
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
       vitest:
         specifier: ^1.6.0
         version: 1.6.1(@types/node@20.17.30)(sass@1.77.6)
