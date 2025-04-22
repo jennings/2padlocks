@@ -1,4 +1,4 @@
-import type { StringKeyPair } from "./encryption";
+import type { StringKeyPair } from "@repo/core/encryption";
 
 export type SecretRequest = {
 	name: string;

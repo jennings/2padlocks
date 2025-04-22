@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { KeyPair, type Context } from "$lib/encryption";
   import { secretRequestEquals, type SecretRequest } from "$lib/model";
+  import { KeyPair, type Context } from "@repo/core/encryption";
   import type { Writable } from "svelte/store";
   import RequestListItem from "./RequestListItem.svelte";
 

@@ -1,0 +1,29 @@
+{
+	"name": "@repo/core",
+	"version": "1.0.0",
+	"description": "",
+	"exports": {
+		"./encryption": {
+			"types": "./dist/encryption.ts",
+			"default": "./dist/encryption.js"
+		}
+	},
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsc --watch",
+		"test": "vitest"
+	},
+	"keywords": [],
+	"type": "module",
+	"author": "",
+	"license": "Apache-2.0",
+	"packageManager": "pnpm@10.9.0",
+	"dependencies": {
+		"libsodium-wrappers": "^0.7.15"
+	},
+	"devDependencies": {
+		"@types/libsodium-wrappers": "^0.7.14",
+		"typescript": "^5.8.3",
+		"vitest": "^1.6.0"
+	}
+}

@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import { OnePassword } from "./1password.js";
-import { createContext } from "./encryption.js";
+import { createContext } from "@repo/core/encryption";
 
 export const requestCommand = new Command();
 

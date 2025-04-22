@@ -4,14 +4,14 @@ import type {
 	StringOutputFormat,
 	Uint8ArrayOutputFormat,
 } from "libsodium-wrappers";
-import _sodium from "libsodium-wrappers";
 
 /** Key used to look up the sodium module in a Context. */
 const sodium = Symbol();
 
 export async function createContext() {
+	const _sodium = await import("libsodium-wrappers");
 	await _sodium.ready;
-	return { [sodium]: _sodium };
+	return { [sodium]: _sodium["default"] };
 }
 
 export type Context = Awaited<ReturnType<typeof createContext>>;
