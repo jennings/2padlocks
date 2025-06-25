@@ -1,5 +1,5 @@
 {
-	"name": "two-padlocks-cli",
+	"name": "@repo/cli",
 	"version": "1.0.0",
 	"description": "",
 	"main": "dist/index.js",
