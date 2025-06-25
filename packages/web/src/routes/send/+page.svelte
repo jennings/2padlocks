@@ -60,6 +60,7 @@
       rows="4"
       cols="50"
       value={plaintext}
+      placeholder="Enter secret here and select 'Encrypt'"
       on:input={(e) => (plaintext = e.currentTarget.value)}
     ></textarea>
     <button on:click={seal.bind(undefined, data.value.context, data.value.publicKey)}>
@@ -67,7 +68,13 @@
     </button>
 
     {#if ciphertext != null}
-      <textarea readonly rows="4" cols="50" value={ciphertext}></textarea>
+      <textarea
+        readonly
+        rows="4"
+        cols="50"
+        placeholder="Encrypted secret will appear here"
+        value={ciphertext}
+      ></textarea>
       <button on:click={clipboardCopy.bind(undefined, ciphertext)}>Copy</button>
     {/if}
   </div>
