@@ -21,6 +21,9 @@ importers:
         specifier: ^11.1.0
         version: 11.1.0
     devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.14
@@ -119,6 +122,9 @@ importers:
         specifier: ^0.7.15
         version: 0.7.15
     devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
       '@types/libsodium-wrappers':
         specifier: ^0.7.14
         version: 0.7.14
@@ -128,6 +134,8 @@ importers:
       vitest:
         specifier: ^1.6.0
         version: 1.6.1(@types/node@20.17.30)(sass@1.77.6)
+
+  packages/typescript-config: {}
 
 packages:
 
